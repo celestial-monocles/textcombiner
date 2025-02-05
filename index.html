@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text File Combiner</title>
+  <link href="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Caprasimo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+	
+    body {
+	  font-family: "Cabin", serif;
+	  padding: 20px;
+	  margin: 0;
+	  height: 100vh;
+	  display: block;
+	  background-color: #C3F4F9;
+	}
+
+	.container {
+	  width: 70%;
+	  margin: 0 auto; /* Centers the container horizontally */
+	  display: flex;
+	  gap: 20px;
+	  justify-content: space-between;
+	}
+
+    .left-container {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 30px;
+	  padding-top:50px;
+      text-align: center;
+	  border-radius: 8px;
+	  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+	  background-color: #E6F3FA;
+    }
+    .right-container {
+      flex: 2;
+      border: 1px solid #ccc;
+      padding: 20px;
+	  padding-top: 0px;
+	  border-radius: 8px;
+	  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+	  background-color: #E6F3FA;
+    }
+	.options-container {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  margin-top: 10px;
+	}
+	
+	.subtext {
+	font-size: 0.8em;
+	}
+
+	h1 {
+	  font-size: 1.5em;
+	  margin-bottom: 25px;
+	  color: #8CA2FA;
+	}
+	
+	h2 {
+	  color: #7FB4FA;
+	}
+	
+	h4 {
+	  margin-bottom: 10px;
+	  color: #7FB4FA;
+	}
+	
+	#files {
+	  margin-left:50px;
+	}
+	
+	#uploadBtn {
+	  margin-top:20px;
+	}
+	
+    #uploadedFiles {
+	  border: 1px solid #ccc;
+	  box-shadow: 3px 3px 4px rgba(0,0,0,0.1) inset,
+                  3px 3px 10px rgba(0,0,0,0.2) inset;
+	  padding: 10px;
+	  margin-bottom:20px;
+	  min-height: 150px;
+	  max-height: 150px;
+	  overflow-y: auto;
+	  box-sizing: border-box;
+	  font-size: 1em;
+	  background-color: #E6ECFA;
+	}
+
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+    .bottom-container {
+	  width: 67%;
+	  margin: 0 auto; /* Centers the container horizontally */
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      text-align: center;
+	  border-radius: 8px;
+	  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+	  background-color: #E6F3FA;
+    }
+    pre {
+	  border: 1px solid #ccc;
+	  font-family: Roboto;
+      background-color: #E6ECFA;
+      padding: 20px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      text-align: left;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+	button {
+      background-color: #ACDBFA;
+      color: white;
+	  font-weight: bold;
+      padding: 10px;
+      border: none;
+	  border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ACC3FA;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-container">
+      <h1>Text File Combiner</h2>
+      <p>Choose your files:</p>
+      <input type="file" id="files" multiple accept=".txt" />
+      <br><br>
+      <button id="uploadBtn">Upload</button>
+    </div>
+    <div class="right-container">
+      <h4>Uploaded Files:</h2>
+	  <p class="subtext">Click <strong>Upload</strong> to add more files</p>
+      <div id="uploadedFiles"></div>
+		<div class="options-container">
+		  <label><input type="checkbox" id="lineBreakToggle"> Include Line Gap</label>
+		  <button id="combineBtn">Combine</button>
+		</div>
+    </div>
+  </div>
+  <div class="bottom-container">
+    <h2>Combined Text</h2>
+    <div class="buttons">
+      <button id="downloadButton">Download</button>
+      <button id="copyButton">Copy</button>
+    </div>
+    <pre id="combinedText"></pre>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
